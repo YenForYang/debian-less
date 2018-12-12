@@ -1,0 +1,42 @@
+{
+    "driver_name" : "icc",
+    "options" : [ "-I.", "-march=native", "-parallel", "-inline-level=2", "-qemit-build-options", "-qemit-messages", "-multiple-processes=8", "-qoverride-limits", "-falign-loops", "-falign-functions", "-qopt-matmul", "-qopt-mem-layout-trans", "-fpermissive", "-ipo-jobs4", "-Wl,--as-needed,--gc-sections,--print-gc-sections,--print-memory-usage,--relax,--stats", "-ffunction-sections", "-fdata-sections", "-diag-disable=10148,10006,10121,11021", "-par-schedule-auto", "-ipo", "-c", "-DBINDIR="/usr/bin"", "-DSYSDIR="/etc"", "-Wdate-time", "-D_FORTIFY_SOURCE=2", "-g", "-O2", "-fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=.", "-fstack-protector-strong", "-Wformat", "-Werror=format-security", "-march=native", "-pipe", "-Wall" ],
+    "objects" : [
+        {
+            "object_name" : "cmdbuf.o",
+            "source_name" : "cmdbuf.c",
+            "start_time" : "2018-12-02T06:35:15Z",
+            "messages" : [
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \treturn cmd_step_common(p, ch, *pp - p, pwidth, bswidth);\n  \t                              ^",
+                    "line" : "241",
+                    "diagnostic_num" : "180",
+                    "file" : "cmdbuf.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \treturn cmd_step_common(*pp, ch, p - *pp, pwidth, bswidth);\n  \t                                ^",
+                    "line" : "256",
+                    "diagnostic_num" : "180",
+                    "file" : "cmdbuf.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \t\taction = cmd_ichar(os, s - os);\n  \t\t                       ^",
+                    "line" : "920",
+                    "diagnostic_num" : "180",
+                    "file" : "cmdbuf.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \t\tread_cmdhist(copy_hist, &ctx, skip_search, skip_shell);\n  \t\t                        ^",
+                    "line" : "1668",
+                    "diagnostic_num" : "180",
+                    "file" : "cmdbuf.c",
+                    "type" : "warning"
+                }
+            ],
+            "end_time" : "2018-12-02T06:35:15Z"
+        }
+    ]
+}

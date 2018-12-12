@@ -1,0 +1,781 @@
+ dpkg-buildpackage -D -us -uc -ui -b -Jauto -Pnobiarch,nocheck
+dpkg-buildpackage: info: source package less
+dpkg-buildpackage: info: source version 530-1
+dpkg-buildpackage: info: source distribution UNRELEASED
+dpkg-buildpackage: info: source changed by Richard Yang <richard@yenforyang.com>
+ dpkg-source --before-build .
+dpkg-buildpackage: info: host architecture amd64
+dpkg-source: info: using patch list from debian/patches/series
+dpkg-source: info: applying 01-434417-LESS_IS_MORE.patch
+dpkg-source: info: applying 02-655926-more_can_go_backwards.patch
+ fakeroot debian/rules clean
+dh_testdir
+dh_testroot
+rm -f build-stamp
+[ ! -f Makefile ] || /usr/bin/make distclean
+dh_clean
+	rm -f debian/debhelper-build-stamp
+	rm -rf debian/.debhelper/
+	rm -f -- debian/less.substvars debian/files
+	rm -fr -- debian/less/ debian/tmp/
+	find .  \( \( \
+		\( -path .\*/.git -o -path .\*/.svn -o -path .\*/.bzr -o -path .\*/.hg -o -path .\*/CVS -o -path .\*/.pc -o -path .\*/_darcs \) -prune -o -type f -a \
+	        \( -name '#*#' -o -name '.*~' -o -name '*~' -o -name DEADJOE \
+		 -o -name '*.orig' -o -name '*.rej' -o -name '*.bak' \
+		 -o -name '.*.orig' -o -name .*.rej -o -name '.SUMS' \
+		 -o -name TAGS -o \( -path '*/.deps/*' -a -name '*.P' \) \
+		\) -exec rm -f {} + \) -o \
+		\( -type d -a -name autom4te.cache -prune -exec rm -rf {} + \) \)
+ERROR: ld.so: object 'libfakeroot-sysv.so' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+ debian/rules build
+dh_testdir
+./configure \
+	--prefix=/usr \
+	--sysconfdir=/etc \
+	--mandir=`pwd`/debian/`dh_listpackages`/usr/share/man \
+	--with-regex=gnu \
+	--with-editor=/usr/bin/editor 
+checking for gcc... icc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether icc accepts -g... yes
+checking for icc option to accept ISO C89... none needed
+checking for library containing strerror... none required
+checking how to run the C preprocessor... icc -E
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking whether icc needs -traditional... no
+checking for a BSD-compatible install... /usr/bin/install -c
+checking for special C compiler options needed for large files... no
+checking for _FILE_OFFSET_BITS value needed for large files... no
+checking for tgoto in -ltinfo... yes
+checking for initscr in -lxcurses... no
+checking for initscr in -lncursesw... yes
+checking for initscr in -lncurses... yes
+checking for initscr in -lcurses... yes
+checking for tgetent in -ltermcap... yes
+checking for tgetent in -ltermlib... no
+checking for library containing regcmp... no
+checking for working terminal libraries... using -ltinfo
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking ctype.h usability... yes
+checking ctype.h presence... yes
+checking for ctype.h... yes
+checking errno.h usability... yes
+checking errno.h presence... yes
+checking for errno.h... yes
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking limits.h usability... yes
+checking limits.h presence... yes
+checking for limits.h... yes
+checking stdio.h usability... yes
+checking stdio.h presence... yes
+checking for stdio.h... yes
+checking for stdlib.h... (cached) yes
+checking for string.h... (cached) yes
+checking termcap.h usability... yes
+checking termcap.h presence... yes
+checking for termcap.h... yes
+checking termio.h usability... yes
+checking termio.h presence... yes
+checking for termio.h... yes
+checking termios.h usability... yes
+checking termios.h presence... yes
+checking for termios.h... yes
+checking time.h usability... yes
+checking time.h presence... yes
+checking for time.h... yes
+checking for unistd.h... (cached) yes
+checking values.h usability... yes
+checking values.h presence... yes
+checking for values.h... yes
+checking sys/ioctl.h usability... yes
+checking sys/ioctl.h presence... yes
+checking for sys/ioctl.h... yes
+checking sys/stream.h usability... no
+checking sys/stream.h presence... no
+checking for sys/stream.h... no
+checking wctype.h usability... yes
+checking wctype.h presence... yes
+checking for wctype.h... yes
+checking whether stat file-mode macros are broken... no
+checking for an ANSI C-conforming const... yes
+checking for off_t... yes
+checking for size_t... yes
+checking whether time.h and sys/time.h may both be included... yes
+checking for off_t... (cached) yes
+checking for void... yes
+checking for const... yes
+checking for time_t... yes
+checking for st_ino in struct stat... yes
+checking for ANSI function prototypes... yes
+checking return type of signal handlers... void
+checking for fsync... yes
+checking for popen... yes
+checking for _setjmp... yes
+checking for sigprocmask... yes
+checking for sigsetmask... yes
+checking for snprintf... yes
+checking for stat... yes
+checking for system... yes
+checking for fchmod... yes
+checking for memcpy... yes
+checking for strchr... yes
+checking for strstr... yes
+checking for tcgetattr... yes
+checking for fileno... yes
+checking for strerror... yes
+checking for sys_errlist... yes
+checking for sigset_t... yes
+checking for sigemptyset... yes
+checking for errno... yes - in errno.h
+checking for locale... yes
+checking for ctype functions... yes
+checking for wctype functions... yes
+checking termcap for ospeed... yes - in termcap.h
+checking for floating point... yes
+checking for re_compile_pattern in -lc... yes
+regular expression library:  gnu
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating defines.h
+/usr/bin/make CPPFLAGS="-Wdate-time -D_FORTIFY_SOURCE=2" CFLAGS="-g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall" LDFLAGS="-Wl,-z,relro -Wl,-z,now -Wl,--as-needed,--gc-sections,--print-gc-sections,--print-memory-usage,--stats"
+make[1]: Entering directory '/home/richard/debs/NONGIT/less/less-530'
+test ! -f stamp-h || CONFIG_FILES= CONFIG_HEADERS=defines.h ./config.status
+touch stamp-h
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall main.c
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall screen.c
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall brac.c
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall ch.c
+ch.c(289): warning #2218: result of call is not used
+  		write(logfile, (char *) &bp->data[bp->datasize], n);
+  		^
+
+ch.c(437): warning #2218: result of call is not used
+  				write(logfile, (char *) bp->data, bp->datasize);
+  				^
+
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall charset.c
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall cmdbuf.c
+cmdbuf.c(241): warning #180: argument is incompatible with formal parameter
+  	return cmd_step_common(p, ch, *pp - p, pwidth, bswidth);
+  	                              ^
+
+cmdbuf.c(256): warning #180: argument is incompatible with formal parameter
+  	return cmd_step_common(*pp, ch, p - *pp, pwidth, bswidth);
+  	                                ^
+
+cmdbuf.c(920): warning #180: argument is incompatible with formal parameter
+  		action = cmd_ichar(os, s - os);
+  		                       ^
+
+cmdbuf.c(1668): warning #180: argument is incompatible with formal parameter
+  		read_cmdhist(copy_hist, &ctx, skip_search, skip_shell);
+  		                        ^
+
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall command.c
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall cvt.c
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall decode.c
+decode.c(305): warning #180: argument is incompatible with formal parameter
+  		expand_special_keys(t->t_start, t->t_end - t->t_start);
+  		                                ^
+
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall edit.c
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall filename.c
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall forwback.c
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall help.c
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall ifile.c
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall input.c
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall jump.c
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall line.c
+line.c(241): warning #180: argument is incompatible with formal parameter
+  		add_linebuf(c, a, 1); /* column 0: status */
+  		            ^
+
+line.c(242): warning #180: argument is incompatible with formal parameter
+  		add_linebuf(' ', AT_NORMAL, 1); /* column 1: empty */
+  		            ^
+
+line.c(260): warning #180: argument is incompatible with formal parameter
+  			add_linebuf(' ', AT_NORMAL, 1);
+  			            ^
+
+line.c(262): warning #180: argument is incompatible with formal parameter
+  			add_linebuf(buf[i], AT_BOLD, 1);
+  			            ^
+
+line.c(263): warning #180: argument is incompatible with formal parameter
+  		add_linebuf(' ', AT_NORMAL, 1);
+  		            ^
+
+line.c(271): warning #180: argument is incompatible with formal parameter
+  		add_linebuf(' ', AT_NORMAL, 1);
+  		            ^
+
+line.c(715): warning #180: argument is incompatible with formal parameter
+  		add_linebuf(*rep++, a, 0);
+  		            ^
+
+line.c(747): warning #180: argument is incompatible with formal parameter
+  	if (column + to_tab - 1 + pwidth(' ', attr, 0) + attr_ewidth(attr) > sc_width)
+  	                                 ^
+
+line.c(747): warning #180: argument is incompatible with formal parameter
+  	if (column + to_tab - 1 + pwidth(' ', attr, 0) + attr_ewidth(attr) > sc_width)
+  	                                            ^
+
+line.c(751): warning #180: argument is incompatible with formal parameter
+  		STORE_CHAR(' ', attr, " ", pos);
+  		^
+
+line.c(776): warning #180: argument is incompatible with formal parameter
+              pwidth(' ', binattr, 0) + attr_ewidth(binattr) > sc_width)
+                     ^
+
+line.c(776): warning #180: argument is incompatible with formal parameter
+              pwidth(' ', binattr, 0) + attr_ewidth(binattr) > sc_width)
+                                   ^
+
+line.c(780): warning #180: argument is incompatible with formal parameter
+  		STORE_CHAR(*s, AT_BINARY, NULL, pos);
+  		^
+
+line.c(792): warning #180: argument is incompatible with formal parameter
+  		if (store_prchar(mbc_buf[i], pos))
+  		                 ^
+
+line.c(932): warning #180: argument is incompatible with formal parameter
+  			STORE_PRCHAR('\b', pos);
+  			^
+
+line.c(1024): warning #180: argument is incompatible with formal parameter
+  			STORE_PRCHAR((char) ch, pos);
+  			^
+
+line.c(1033): warning #180: argument is incompatible with formal parameter
+  		    pwidth(' ', binattr, 0) + attr_ewidth(binattr) > sc_width)
+  		           ^
+
+line.c(1033): warning #180: argument is incompatible with formal parameter
+  		    pwidth(' ', binattr, 0) + attr_ewidth(binattr) > sc_width)
+  		                         ^
+
+line.c(1037): warning #180: argument is incompatible with formal parameter
+  			STORE_CHAR(*s, AT_BINARY, NULL, pos);
+  			^
+
+line.c(1073): warning #180: argument is incompatible with formal parameter
+  		add_linebuf(*p, AT_ANSI, 0);
+  		            ^
+
+line.c(1122): warning #180: argument is incompatible with formal parameter
+  			add_linebuf(' ', AT_NORMAL, 1);
+  			            ^
+
+line.c(1146): warning #180: argument is incompatible with formal parameter
+  		add_linebuf('\n', AT_NORMAL, 0);
+  		            ^
+
+line.c(1164): warning #180: argument is incompatible with formal parameter
+  		add_linebuf(' ', AT_NORMAL, 1);
+  		            ^
+
+line.c(1165): warning #180: argument is incompatible with formal parameter
+  		add_linebuf('\b', AT_NORMAL, -1);
+  		            ^
+
+line.c(1167): warning #180: argument is incompatible with formal parameter
+  	set_linebuf(curr, '\0', AT_NORMAL);
+  	                  ^
+
+line.c(1177): warning #180: argument is incompatible with formal parameter
+  	set_linebuf(0, c, AT_NORMAL|AT_HILITE);
+  	               ^
+
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall linenum.c
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall lsystem.c
+lsystem.c(120): warning #2218: result of call is not used
+  		dup(inp);
+  		^
+
+lsystem.c(154): warning #2218: result of call is not used
+  	system(p);
+  	^
+
+lsystem.c(179): warning #2218: result of call is not used
+  	dup(inp);
+  	^
+
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall mark.c
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall optfunc.c
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall option.c
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall opttbl.c
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall os.c
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall output.c
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall pattern.c
+pattern.c(303): warning #180: argument is incompatible with formal parameter
+  		matched = match(tpattern, strlen(tpattern), line, line_len, sp, ep);
+  		                          ^
+
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall position.c
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall prompt.c
+prompt.c(287): warning #180: argument is incompatible with formal parameter
+  			ap_linenum(0);
+  			           ^
+
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall search.c
+search.c(1012): warning #180: argument is incompatible with formal parameter
+  		create_hilites(linepos, sp-line, ep-line, chpos);
+  		                        ^
+
+search.c(1012): warning #180: argument is incompatible with formal parameter
+  		create_hilites(linepos, sp-line, ep-line, chpos);
+  		                                 ^
+
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall signal.c
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall tags.c
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall ttyin.c
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall version.c
+icc -Wl,-z,relro -Wl,-z,now -Wl,--as-needed,--gc-sections,--print-gc-sections,--print-memory-usage,--stats -o less main.o screen.o brac.o ch.o charset.o cmdbuf.o command.o cvt.o decode.o edit.o filename.o forwback.o help.o ifile.o input.o jump.o line.o linenum.o lsystem.o mark.o optfunc.o option.o opttbl.o os.o output.o pattern.o position.o prompt.o search.o signal.o tags.o ttyin.o version.o   -ltinfo
+ld: removing unused section '.rodata.cst4' in file '/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o'
+ld: removing unused section '.data' in file '/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o'
+ld: removing unused section '.rodata..L_2il0floatpacket.89' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.rodata..L_2il0floatpacket.90' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.rodata..L_2il0floatpacket.91' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.rodata..L_2il0floatpacket.92' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.check_winch' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.raw_mode' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.rodata.raw_mode' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.save_cmdhist' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.expand_cmd_tables' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.edit_next' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.edit_stdin' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.cat_file' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.prev_ifile' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.nifile' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.get_ifile' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.scan_option' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.isoptpending' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.nopendopt' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.edit_tagfile' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.open_getchr' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.save' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.ecalloc' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.skipsp' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.sprefix' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.special_key_str' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.rodata.special_key_str' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.home' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.add_line' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.lower_left' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.line_left' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.goto_line' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.vbell' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.bell' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.clear' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.clear_eol' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.at_switch' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.is_at_equiv' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.apply_at_specials' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.putbs' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.ch_seek' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.ch_tell' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.position' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.match_brac' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.filesize' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.get_filename' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.get_filestate' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.set_filestate' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.ch_get' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.ch_ungetchar' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.end_logfile' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.sync_logfile' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.ch_end_seek' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.ch_beg_seek' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.ch_length' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.ch_setbufspace' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.ch_flush' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.seekable' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.ch_set_eof' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.ch_close' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.ch_getflags' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.setfmt' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.binary_char' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.control_char' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.utf_len' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.is_utf8_well_formed' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.utf_skip_to_lead' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.step_char' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.is_combining_char' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.in_mca' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.forw_textlist' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.back_textlist' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.get_meta_escape' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.shell_quote' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.fcomplete' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.is_dir' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.getfraction' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.rodata.getfraction' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.putstr' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.cmd_reset' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.clear_cmd' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.set_mlist' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.cmd_addhist' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.cmd_int' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.rodata.cmd_int' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.get_cmdbuf' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.cmd_lastpattern' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.edit_prev' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.save_curr_ifile' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.unsave_ifile' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.reopen_curr_ifile' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.fexpand' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.eof_displayed' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.forward' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.backward' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.next_ifile' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.get_altfilename' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.clr_linenum' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.badmark' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.clrmark' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.get_swindow' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.propt' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.opt_has_param' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.opt_prompt' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.findopt' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.findopt_name' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.empty_screen' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.pr_string' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.clr_hilite' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.is_filtering' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.psignals' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.rodata.psignals' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.cleantags' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.ntags' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.getchr' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.clear_attn' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.dispversion' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.ungetcc' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.ungetsc' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.peekcc' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.is_ansi_middle' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.cvt_length' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.cvt_alloc_chpos' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.homefile' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.add_fcmd_table' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.add_ecmd_table' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.ecmd_decode' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.lesskey' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.add_hometable' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.shell_unquote' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.close_altfile' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.get_index' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.store_pos' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.get_pos' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.set_open' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.opened' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.hold_ifile' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.held_ifile' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.set_altpipe' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.get_altpipe' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.set_altfilename' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.pos_clear' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.get_scrpos' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.edit_ifile' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.use_logfile' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.shell_coption' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.last_component' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.currline' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.put_line' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.add_forw_pos' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.add_back_pos' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.empty_lines' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.next_unfiltered' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.prev_unfiltered' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.squish_check' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.get_back_scroll' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.unmark' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.prewind' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.plinenum' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.set_status_col' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.null_line' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.is_filtered' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.is_hilited' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.find_pos' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.percent_pos' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.onscreen' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.sindex_from_sline' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.repaint_hilite' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.find_linenum' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.posmark' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.linenumtoa' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.is_ascii_char' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.is_ansi_end' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.gline' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.get_time' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.add_lnum' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.markpos' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.getnum' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.calc_jump_sline' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.calc_shift_count' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.intread' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.percentage' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.postoa' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.inttoa' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.uncompile_pattern' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.valid_pattern' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.is_null_pattern' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.match_pattern' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.curr_tag' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.clr_hlist' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.clr_filter' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.hlist_last' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.hlist_next' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.hlist_prev' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.hlist_find' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.close_getchr' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.text.init_signals' in file '/tmp/ipo_iccCCjHRv.o'
+ld: removing unused section '.rodata.size_helpdata' in file '/tmp/ipo_iccCCjHRv.o'
+Memory region         Used Size  Region Size  %age Used
+ld: total time in link: 0.195246
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall lesskey.c
+lesskey.c(860): warning #180: argument is incompatible with formal parameter
+  	fputbytes(out, fileheader, sizeof(fileheader));
+  	                           ^
+
+lesskey.c(863): warning #180: argument is incompatible with formal parameter
+  	fputbytes(out, cmdsection, sizeof(cmdsection));
+  	                           ^
+
+lesskey.c(864): warning #180: argument is incompatible with formal parameter
+  	fputint(out, cmdtable.pbuffer - cmdtable.buffer);
+  	             ^
+
+lesskey.c(865): warning #180: argument is incompatible with formal parameter
+  	fputbytes(out, (char *)cmdtable.buffer, cmdtable.pbuffer-cmdtable.buffer);
+  	                                        ^
+
+lesskey.c(867): warning #180: argument is incompatible with formal parameter
+  	fputbytes(out, editsection, sizeof(editsection));
+  	                            ^
+
+lesskey.c(868): warning #180: argument is incompatible with formal parameter
+  	fputint(out, edittable.pbuffer - edittable.buffer);
+  	             ^
+
+lesskey.c(869): warning #180: argument is incompatible with formal parameter
+  	fputbytes(out, (char *)edittable.buffer, edittable.pbuffer-edittable.buffer);
+  	                                         ^
+
+lesskey.c(872): warning #180: argument is incompatible with formal parameter
+  	fputbytes(out, varsection, sizeof(varsection)); 
+  	                           ^
+
+lesskey.c(873): warning #180: argument is incompatible with formal parameter
+  	fputint(out, vartable.pbuffer - vartable.buffer);
+  	             ^
+
+lesskey.c(874): warning #180: argument is incompatible with formal parameter
+  	fputbytes(out, (char *)vartable.buffer, vartable.pbuffer-vartable.buffer);
+  	                                        ^
+
+lesskey.c(877): warning #180: argument is incompatible with formal parameter
+  	fputbytes(out, endsection, sizeof(endsection));
+  	                           ^
+
+lesskey.c(878): warning #180: argument is incompatible with formal parameter
+  	fputbytes(out, filetrailer, sizeof(filetrailer));
+  	                            ^
+
+icc -Wl,-z,relro -Wl,-z,now -Wl,--as-needed,--gc-sections,--print-gc-sections,--print-memory-usage,--stats -o lesskey lesskey.o version.o
+ld: removing unused section '.rodata.cst4' in file '/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o'
+ld: removing unused section '.data' in file '/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o'
+Memory region         Used Size  Region Size  %age Used
+ld: total time in link: 0.131516
+icc -I. -c -DBINDIR=\"/usr/bin\" -DSYSDIR=\"/etc\" -Wdate-time -D_FORTIFY_SOURCE=2 -g -O2 -fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=. -fstack-protector-strong -Wformat -Werror=format-security -march=native -pipe -Wall lessecho.c
+icc -Wl,-z,relro -Wl,-z,now -Wl,--as-needed,--gc-sections,--print-gc-sections,--print-memory-usage,--stats -o lessecho lessecho.o version.o
+ld: removing unused section '.rodata.cst4' in file '/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o'
+ld: removing unused section '.data' in file '/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o'
+Memory region         Used Size  Region Size  %age Used
+ld: total time in link: 0.130118
+make[1]: Leaving directory '/home/richard/debs/NONGIT/less/less-530'
+touch build-stamp
+ fakeroot debian/rules binary
+dh_testdir
+dh_testroot
+dh_prep
+	rm -f -- debian/less.substvars
+	rm -fr -- debian/.debhelper/generated/less/ debian/less/ debian/tmp/
+dh_installdirs
+	install -d debian/less
+	install -d debian/less/bin debian/less/usr/bin
+/usr/bin/make install prefix=`pwd`/debian/`dh_listpackages`/
+make[1]: Entering directory '/home/richard/debs/NONGIT/less/less-530'
+./mkinstalldirs /home/richard/debs/NONGIT/less/less-530/debian/less//bin /home/richard/debs/NONGIT/less/less-530/debian/less/usr/share/man/man1
+mkdir /home/richard/debs/NONGIT/less/less-530/debian/less/usr/share
+mkdir /home/richard/debs/NONGIT/less/less-530/debian/less/usr/share/man
+mkdir /home/richard/debs/NONGIT/less/less-530/debian/less/usr/share/man/man1
+/usr/bin/install -c less /home/richard/debs/NONGIT/less/less-530/debian/less//bin/less
+/usr/bin/install -c lesskey /home/richard/debs/NONGIT/less/less-530/debian/less//bin/lesskey
+/usr/bin/install -c lessecho /home/richard/debs/NONGIT/less/less-530/debian/less//bin/lessecho
+/usr/bin/install -c -m 644 ./less.nro /home/richard/debs/NONGIT/less/less-530/debian/less/usr/share/man/man1/less.1
+/usr/bin/install -c -m 644 ./lesskey.nro /home/richard/debs/NONGIT/less/less-530/debian/less/usr/share/man/man1/lesskey.1
+/usr/bin/install -c -m 644 ./lessecho.nro /home/richard/debs/NONGIT/less/less-530/debian/less/usr/share/man/man1/lessecho.1
+make[1]: Leaving directory '/home/richard/debs/NONGIT/less/less-530'
+install -m 0755 debian/lesspipe `pwd`/debian/`dh_listpackages`/bin/lesspipe
+ln -s lesspipe `pwd`/debian/`dh_listpackages`/bin/lessfile
+ln -s lesspipe.1.gz `pwd`/debian/`dh_listpackages`/usr/share/man/man1/lessfile.1.gz
+dh_testdir
+dh_testroot
+dh_installdebconf
+	install -d debian/less/DEBIAN
+dh_installdocs
+	install -d debian/less/usr/share/doc/less
+	install -d debian/.debhelper/generated/less
+	cp --reflink=auto -a ./debian/LESSOPEN debian/less/usr/share/doc/less
+	chown -R 0:0 debian/less/usr/share/doc
+	chmod -R u\+rw,go=rX debian/less/usr/share/doc
+	install -p -m0644 debian/README.Debian debian/less/usr/share/doc/less/README.Debian
+	install -p -m0644 debian/copyright debian/less/usr/share/doc/less/copyright
+dh_installexamples
+dh_installmenu
+dh_installmime
+	install -d debian/less/usr/lib/mime/packages
+	install -p -m0644 debian/mime debian/less/usr/lib/mime/packages/less
+dh_installcron
+dh_installman debian/lesspipe.1
+	install -p -m0644 debian/lesspipe.1 debian/less/usr/share/man/man1/lesspipe.1
+	man -l --recode UTF-8 ./debian/less/usr/share/man/man1/lessecho.1 > debian/less/usr/share/man/man1/lessecho.1.dh-new
+	man -l --recode UTF-8 ./debian/less/usr/share/man/man1/lesspipe.1 > debian/less/usr/share/man/man1/lesspipe.1.dh-new
+	man -l --recode UTF-8 ./debian/less/usr/share/man/man1/less.1 > debian/less/usr/share/man/man1/less.1.dh-new
+	man -l --recode UTF-8 ./debian/less/usr/share/man/man1/lesskey.1 > debian/less/usr/share/man/man1/lesskey.1.dh-new
+	mv debian/less/usr/share/man/man1/lessecho.1.dh-new debian/less/usr/share/man/man1/lessecho.1
+	chmod 0644 -- debian/less/usr/share/man/man1/lessecho.1
+	mv debian/less/usr/share/man/man1/lesspipe.1.dh-new debian/less/usr/share/man/man1/lesspipe.1
+	chmod 0644 -- debian/less/usr/share/man/man1/lesspipe.1
+	mv debian/less/usr/share/man/man1/less.1.dh-new debian/less/usr/share/man/man1/less.1
+	chmod 0644 -- debian/less/usr/share/man/man1/less.1
+	mv debian/less/usr/share/man/man1/lesskey.1.dh-new debian/less/usr/share/man/man1/lesskey.1
+	chmod 0644 -- debian/less/usr/share/man/man1/lesskey.1
+dh_installchangelogs NEWS
+	install -p -m0644 debian/changelog debian/less/usr/share/doc/less/changelog.Debian
+	install -p -m0644 NEWS debian/less/usr/share/doc/less/changelog
+dh_link
+	rm -f debian/less/usr/share/man/man1/lessfile.1.gz
+	ln -s lesspipe.1.gz debian/less/usr/share/man/man1/lessfile.1.gz
+	rm -f debian/less/bin/lessfile
+	ln -s lesspipe debian/less/bin/lessfile
+dh_strip
+	install -d debian/.debhelper/less/dbgsym-root/usr/lib/debug/.build-id/0f
+	objcopy --only-keep-debug --compress-debug-sections debian/less/bin/less debian/.debhelper/less/dbgsym-root/usr/lib/debug/.build-id/0f/96dc62dc69a63c24d29cc427248c1326603bff.debug
+	chmod 0644 -- debian/.debhelper/less/dbgsym-root/usr/lib/debug/.build-id/0f/96dc62dc69a63c24d29cc427248c1326603bff.debug
+	chown 0:0 -- debian/.debhelper/less/dbgsym-root/usr/lib/debug/.build-id/0f/96dc62dc69a63c24d29cc427248c1326603bff.debug
+	strip --remove-section=.comment --remove-section=.note debian/less/bin/less
+	objcopy --add-gnu-debuglink debian/.debhelper/less/dbgsym-root/usr/lib/debug/.build-id/0f/96dc62dc69a63c24d29cc427248c1326603bff.debug debian/less/bin/less
+	install -d debian/.debhelper/less/dbgsym-root/usr/lib/debug/.build-id/f3
+	objcopy --only-keep-debug --compress-debug-sections debian/less/bin/lessecho debian/.debhelper/less/dbgsym-root/usr/lib/debug/.build-id/f3/4d6fd64d2cae91ad62d33db077382604af0fbb.debug
+	chmod 0644 -- debian/.debhelper/less/dbgsym-root/usr/lib/debug/.build-id/f3/4d6fd64d2cae91ad62d33db077382604af0fbb.debug
+	chown 0:0 -- debian/.debhelper/less/dbgsym-root/usr/lib/debug/.build-id/f3/4d6fd64d2cae91ad62d33db077382604af0fbb.debug
+	strip --remove-section=.comment --remove-section=.note debian/less/bin/lessecho
+	objcopy --add-gnu-debuglink debian/.debhelper/less/dbgsym-root/usr/lib/debug/.build-id/f3/4d6fd64d2cae91ad62d33db077382604af0fbb.debug debian/less/bin/lessecho
+	install -d debian/.debhelper/less/dbgsym-root/usr/lib/debug/.build-id/e9
+	objcopy --only-keep-debug --compress-debug-sections debian/less/bin/lesskey debian/.debhelper/less/dbgsym-root/usr/lib/debug/.build-id/e9/d09a1ed79b7b0b67b7db9b5d5a3eb70025441d.debug
+	chmod 0644 -- debian/.debhelper/less/dbgsym-root/usr/lib/debug/.build-id/e9/d09a1ed79b7b0b67b7db9b5d5a3eb70025441d.debug
+	chown 0:0 -- debian/.debhelper/less/dbgsym-root/usr/lib/debug/.build-id/e9/d09a1ed79b7b0b67b7db9b5d5a3eb70025441d.debug
+	strip --remove-section=.comment --remove-section=.note debian/less/bin/lesskey
+	objcopy --add-gnu-debuglink debian/.debhelper/less/dbgsym-root/usr/lib/debug/.build-id/e9/d09a1ed79b7b0b67b7db9b5d5a3eb70025441d.debug debian/less/bin/lesskey
+	install -d debian/.debhelper/less/dbgsym-root/usr/share/doc
+	ln -s less debian/.debhelper/less/dbgsym-root/usr/share/doc/less-dbgsym
+dh_compress
+	cd debian/less
+	chmod a-x usr/share/doc/less/changelog usr/share/doc/less/changelog.Debian usr/share/man/man1/less.1 usr/share/man/man1/lessecho.1 usr/share/man/man1/lesskey.1 usr/share/man/man1/lesspipe.1
+	gzip -9nf usr/share/doc/less/changelog usr/share/doc/less/changelog.Debian usr/share/man/man1/less.1 usr/share/man/man1/lessecho.1 usr/share/man/man1/lesskey.1 usr/share/man/man1/lesspipe.1
+	cd '/home/richard/debs/NONGIT/less/less-530'
+ERROR: ld.so: object 'libfakeroot-sysv.so' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+dh_fixperms
+	find debian/less -true -print0 2>/dev/null | xargs -0r chown --no-dereference 0:0
+	find debian/less ! -type l -a -true -a -true -print0 2>/dev/null | xargs -0r chmod go=rX,u+rw,a-s
+	find debian/less/usr/share/doc -type f -a -true -a ! -regex 'debian/less/usr/share/doc/[^/]*/examples/.*' -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/less/usr/share/doc -type d -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0755
+	find debian/less/usr/share/man -type f -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/less -type f \( -name '*.so.*' -o -name '*.so' -o -name '*.la' -o -name '*.a' -o -name '*.js' -o -name '*.css' -o -name '*.scss' -o -name '*.sass' -o -name '*.jpeg' -o -name '*.jpg' -o -name '*.png' -o -name '*.gif' -o -name '*.cmxs' \) -a -true -a -true -print0 2>/dev/null | xargs -0r chmod 0644
+	find debian/less/usr/bin debian/less/bin -type f -a -true -a -true -print0 2>/dev/null | xargs -0r chmod a+x
+	find debian/less/usr/lib -type f -name '*.ali' -a -true -a -true -print0 2>/dev/null | xargs -0r chmod uga-w
+dh_installdeb
+	sed s/\#DEBHELPER\#// debian/postinst > debian/less/DEBIAN/postinst
+	chmod 0755 -- debian/less/DEBIAN/postinst
+	chown 0:0 -- debian/less/DEBIAN/postinst
+	sed s/\#DEBHELPER\#// debian/prerm > debian/less/DEBIAN/prerm
+	chmod 0755 -- debian/less/DEBIAN/prerm
+	chown 0:0 -- debian/less/DEBIAN/prerm
+	sed s/\#DEBHELPER\#// debian/postrm > debian/less/DEBIAN/postrm
+	chmod 0755 -- debian/less/DEBIAN/postrm
+	chown 0:0 -- debian/less/DEBIAN/postrm
+dh_shlibdeps
+ERROR: ld.so: object 'libfakeroot-sysv.so' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+	dpkg-shlibdeps -Tdebian/less.substvars debian/less/bin/less debian/less/bin/lessecho debian/less/bin/lesskey
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: can't extract name and version from library name 'libiomp5.so'
+dpkg-shlibdeps: warning: package could avoid a useless dependency if debian/less/bin/less debian/less/bin/lesskey debian/less/bin/lessecho were not linked against libgcc_s.so.1 (they use none of the library's symbols)
+dpkg-shlibdeps: warning: package could avoid a useless dependency if debian/less/bin/less debian/less/bin/lesskey debian/less/bin/lessecho were not linked against libdl.so.2 (they use none of the library's symbols)
+dh_gencontrol
+	echo misc:Depends= >> debian/less.substvars
+	echo misc:Pre-Depends= >> debian/less.substvars
+	install -d debian/.debhelper/less/dbgsym-root/DEBIAN
+	dpkg-gencontrol -pless -ldebian/changelog -Tdebian/less.substvars -Pdebian/.debhelper/less/dbgsym-root -UPre-Depends -URecommends -USuggests -UEnhances -UProvides -UEssential -UConflicts -DPriority=optional -UHomepage -UImportant -DAuto-Built-Package=debug-symbols -DPackage=less-dbgsym "-DDepends=less (= \${binary:Version})" "-DDescription=debug symbols for less" "-DBuild-Ids=0f96dc62dc69a63c24d29cc427248c1326603bff e9d09a1ed79b7b0b67b7db9b5d5a3eb70025441d f34d6fd64d2cae91ad62d33db077382604af0fbb" -DSection=debug -UMulti-Arch -UReplaces -UBreaks
+	chmod 0644 -- debian/.debhelper/less/dbgsym-root/DEBIAN/control
+	chown 0:0 -- debian/.debhelper/less/dbgsym-root/DEBIAN/control
+	dpkg-gencontrol -pless -ldebian/changelog -Tdebian/less.substvars -Pdebian/less
+	chmod 0644 -- debian/less/DEBIAN/control
+	chown 0:0 -- debian/less/DEBIAN/control
+dh_md5sums
+ERROR: ld.so: object 'libfakeroot-sysv.so' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+	cd debian/less >/dev/null && xargs -r0 md5sum | perl -pe 'if (s@^\\@@) { s/\\\\/\\/g; }' > DEBIAN/md5sums
+	chmod 0644 -- debian/less/DEBIAN/md5sums
+	chown 0:0 -- debian/less/DEBIAN/md5sums
+ERROR: ld.so: object 'libfakeroot-sysv.so' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+	cd debian/.debhelper/less/dbgsym-root >/dev/null && xargs -r0 md5sum | perl -pe 'if (s@^\\@@) { s/\\\\/\\/g; }' > DEBIAN/md5sums
+	chmod 0644 -- debian/.debhelper/less/dbgsym-root/DEBIAN/md5sums
+	chown 0:0 -- debian/.debhelper/less/dbgsym-root/DEBIAN/md5sums
+dh_builddeb
+	dpkg-deb --build debian/less ..
+	dpkg-deb --build debian/.debhelper/less/dbgsym-root ..
+dpkg-deb: building package 'less' in '../less_530-1_amd64.deb'.
+dpkg-deb: building package 'less-dbgsym' in '../less-dbgsym_530-1_amd64.deb'.
+ dpkg-genbuildinfo --build=binary
+ dpkg-genchanges --build=binary >../less_530-1_amd64.changes
+dpkg-genchanges: info: binary-only upload (no source code included)
+ dpkg-source --after-build .
+dpkg-source: info: unapplying 02-655926-more_can_go_backwards.patch
+dpkg-source: info: unapplying 01-434417-LESS_IS_MORE.patch
+dpkg-buildpackage: info: binary-only upload (no source included)
+Now running lintian less_530-1_amd64.changes ...
+W: less: hardening-no-pie bin/less
+W: less: hardening-no-pie bin/lessecho
+W: less: hardening-no-pie bin/lesskey
+Finished running lintian.

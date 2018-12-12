@@ -1,0 +1,12 @@
+Package: less-dbgsym
+Source: less
+Version: 530-1
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: Anibal Monsalve Salazar <anibal@debian.org>
+Installed-Size: 234
+Depends: less (= 530-1)
+Section: debug
+Priority: optional
+Description: debug symbols for less
+Build-Ids: 0f96dc62dc69a63c24d29cc427248c1326603bff e9d09a1ed79b7b0b67b7db9b5d5a3eb70025441d f34d6fd64d2cae91ad62d33db077382604af0fbb

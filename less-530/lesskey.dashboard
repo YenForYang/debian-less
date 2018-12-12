@@ -1,0 +1,98 @@
+{
+    "driver_name" : "icc",
+    "options" : [ "-I.", "-march=native", "-parallel", "-inline-level=2", "-qemit-build-options", "-qemit-messages", "-multiple-processes=8", "-qoverride-limits", "-falign-loops", "-falign-functions", "-qopt-matmul", "-qopt-mem-layout-trans", "-fpermissive", "-ipo-jobs4", "-Wl,--as-needed,--gc-sections,--print-gc-sections,--print-memory-usage,--relax,--stats", "-ffunction-sections", "-fdata-sections", "-diag-disable=10148,10006,10121,11021", "-par-schedule-auto", "-ipo", "-c", "-DBINDIR="/usr/bin"", "-DSYSDIR="/etc"", "-Wdate-time", "-D_FORTIFY_SOURCE=2", "-g", "-O2", "-fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=.", "-fstack-protector-strong", "-Wformat", "-Werror=format-security", "-march=native", "-pipe", "-Wall" ],
+    "objects" : [
+        {
+            "object_name" : "lesskey.o",
+            "source_name" : "lesskey.c",
+            "start_time" : "2018-12-02T06:35:39Z",
+            "messages" : [
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \tfputbytes(out, fileheader, sizeof(fileheader));\n  \t                           ^",
+                    "line" : "860",
+                    "diagnostic_num" : "180",
+                    "file" : "lesskey.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \tfputbytes(out, cmdsection, sizeof(cmdsection));\n  \t                           ^",
+                    "line" : "863",
+                    "diagnostic_num" : "180",
+                    "file" : "lesskey.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \tfputint(out, cmdtable.pbuffer - cmdtable.buffer);\n  \t             ^",
+                    "line" : "864",
+                    "diagnostic_num" : "180",
+                    "file" : "lesskey.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \tfputbytes(out, (char *)cmdtable.buffer, cmdtable.pbuffer-cmdtable.buffer);\n  \t                                        ^",
+                    "line" : "865",
+                    "diagnostic_num" : "180",
+                    "file" : "lesskey.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \tfputbytes(out, editsection, sizeof(editsection));\n  \t                            ^",
+                    "line" : "867",
+                    "diagnostic_num" : "180",
+                    "file" : "lesskey.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \tfputint(out, edittable.pbuffer - edittable.buffer);\n  \t             ^",
+                    "line" : "868",
+                    "diagnostic_num" : "180",
+                    "file" : "lesskey.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \tfputbytes(out, (char *)edittable.buffer, edittable.pbuffer-edittable.buffer);\n  \t                                         ^",
+                    "line" : "869",
+                    "diagnostic_num" : "180",
+                    "file" : "lesskey.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \tfputbytes(out, varsection, sizeof(varsection)); \n  \t                           ^",
+                    "line" : "872",
+                    "diagnostic_num" : "180",
+                    "file" : "lesskey.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \tfputint(out, vartable.pbuffer - vartable.buffer);\n  \t             ^",
+                    "line" : "873",
+                    "diagnostic_num" : "180",
+                    "file" : "lesskey.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \tfputbytes(out, (char *)vartable.buffer, vartable.pbuffer-vartable.buffer);\n  \t                                        ^",
+                    "line" : "874",
+                    "diagnostic_num" : "180",
+                    "file" : "lesskey.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \tfputbytes(out, endsection, sizeof(endsection));\n  \t                           ^",
+                    "line" : "877",
+                    "diagnostic_num" : "180",
+                    "file" : "lesskey.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \tfputbytes(out, filetrailer, sizeof(filetrailer));\n  \t                            ^",
+                    "line" : "878",
+                    "diagnostic_num" : "180",
+                    "file" : "lesskey.c",
+                    "type" : "warning"
+                }
+            ],
+            "end_time" : "2018-12-02T06:35:39Z"
+        }
+    ]
+}

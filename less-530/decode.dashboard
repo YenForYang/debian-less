@@ -1,0 +1,21 @@
+{
+    "driver_name" : "icc",
+    "options" : [ "-I.", "-march=native", "-parallel", "-inline-level=2", "-qemit-build-options", "-qemit-messages", "-multiple-processes=8", "-qoverride-limits", "-falign-loops", "-falign-functions", "-qopt-matmul", "-qopt-mem-layout-trans", "-fpermissive", "-ipo-jobs4", "-Wl,--as-needed,--gc-sections,--print-gc-sections,--print-memory-usage,--relax,--stats", "-ffunction-sections", "-fdata-sections", "-diag-disable=10148,10006,10121,11021", "-par-schedule-auto", "-ipo", "-c", "-DBINDIR="/usr/bin"", "-DSYSDIR="/etc"", "-Wdate-time", "-D_FORTIFY_SOURCE=2", "-g", "-O2", "-fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=.", "-fstack-protector-strong", "-Wformat", "-Werror=format-security", "-march=native", "-pipe", "-Wall" ],
+    "objects" : [
+        {
+            "object_name" : "decode.o",
+            "source_name" : "decode.c",
+            "start_time" : "2018-12-02T06:35:15Z",
+            "messages" : [
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \t\texpand_special_keys(t->t_start, t->t_end - t->t_start);\n  \t\t                                ^",
+                    "line" : "305",
+                    "diagnostic_num" : "180",
+                    "file" : "decode.c",
+                    "type" : "warning"
+                }
+            ],
+            "end_time" : "2018-12-02T06:35:15Z"
+        }
+    ]
+}

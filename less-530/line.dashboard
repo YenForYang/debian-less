@@ -1,0 +1,196 @@
+{
+    "driver_name" : "icc",
+    "options" : [ "-I.", "-march=native", "-parallel", "-inline-level=2", "-qemit-build-options", "-qemit-messages", "-multiple-processes=8", "-qoverride-limits", "-falign-loops", "-falign-functions", "-qopt-matmul", "-qopt-mem-layout-trans", "-fpermissive", "-ipo-jobs4", "-Wl,--as-needed,--gc-sections,--print-gc-sections,--print-memory-usage,--relax,--stats", "-ffunction-sections", "-fdata-sections", "-diag-disable=10148,10006,10121,11021", "-par-schedule-auto", "-ipo", "-c", "-DBINDIR="/usr/bin"", "-DSYSDIR="/etc"", "-Wdate-time", "-D_FORTIFY_SOURCE=2", "-g", "-O2", "-fdebug-prefix-map=/home/richard/debs/NONGIT/less/less-530=.", "-fstack-protector-strong", "-Wformat", "-Werror=format-security", "-march=native", "-pipe", "-Wall" ],
+    "objects" : [
+        {
+            "object_name" : "line.o",
+            "source_name" : "line.c",
+            "start_time" : "2018-12-02T06:35:17Z",
+            "messages" : [
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \t\tadd_linebuf(c, a, 1); \/* column 0: status *\/\n  \t\t            ^",
+                    "line" : "241",
+                    "diagnostic_num" : "180",
+                    "file" : "line.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \t\tadd_linebuf(' ', AT_NORMAL, 1); \/* column 1: empty *\/\n  \t\t            ^",
+                    "line" : "242",
+                    "diagnostic_num" : "180",
+                    "file" : "line.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \t\t\tadd_linebuf(' ', AT_NORMAL, 1);\n  \t\t\t            ^",
+                    "line" : "260",
+                    "diagnostic_num" : "180",
+                    "file" : "line.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \t\t\tadd_linebuf(buf[i], AT_BOLD, 1);\n  \t\t\t            ^",
+                    "line" : "262",
+                    "diagnostic_num" : "180",
+                    "file" : "line.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \t\tadd_linebuf(' ', AT_NORMAL, 1);\n  \t\t            ^",
+                    "line" : "263",
+                    "diagnostic_num" : "180",
+                    "file" : "line.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \t\tadd_linebuf(' ', AT_NORMAL, 1);\n  \t\t            ^",
+                    "line" : "271",
+                    "diagnostic_num" : "180",
+                    "file" : "line.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \t\tadd_linebuf(*rep++, a, 0);\n  \t\t            ^",
+                    "line" : "715",
+                    "diagnostic_num" : "180",
+                    "file" : "line.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \tif (column + to_tab - 1 + pwidth(' ', attr, 0) + attr_ewidth(attr) > sc_width)\n  \t                                 ^",
+                    "line" : "747",
+                    "diagnostic_num" : "180",
+                    "file" : "line.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \tif (column + to_tab - 1 + pwidth(' ', attr, 0) + attr_ewidth(attr) > sc_width)\n  \t                                            ^",
+                    "line" : "747",
+                    "diagnostic_num" : "180",
+                    "file" : "line.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \t\tSTORE_CHAR(' ', attr, \" \", pos);\n  \t\t^",
+                    "line" : "751",
+                    "diagnostic_num" : "180",
+                    "file" : "line.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n              pwidth(' ', binattr, 0) + attr_ewidth(binattr) > sc_width)\n                     ^",
+                    "line" : "776",
+                    "diagnostic_num" : "180",
+                    "file" : "line.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n              pwidth(' ', binattr, 0) + attr_ewidth(binattr) > sc_width)\n                                   ^",
+                    "line" : "776",
+                    "diagnostic_num" : "180",
+                    "file" : "line.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \t\tSTORE_CHAR(*s, AT_BINARY, NULL, pos);\n  \t\t^",
+                    "line" : "780",
+                    "diagnostic_num" : "180",
+                    "file" : "line.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \t\tif (store_prchar(mbc_buf[i], pos))\n  \t\t                 ^",
+                    "line" : "792",
+                    "diagnostic_num" : "180",
+                    "file" : "line.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \t\t\tSTORE_PRCHAR('\\b', pos);\n  \t\t\t^",
+                    "line" : "932",
+                    "diagnostic_num" : "180",
+                    "file" : "line.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \t\t\tSTORE_PRCHAR((char) ch, pos);\n  \t\t\t^",
+                    "line" : "1024",
+                    "diagnostic_num" : "180",
+                    "file" : "line.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \t\t    pwidth(' ', binattr, 0) + attr_ewidth(binattr) > sc_width)\n  \t\t           ^",
+                    "line" : "1033",
+                    "diagnostic_num" : "180",
+                    "file" : "line.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \t\t    pwidth(' ', binattr, 0) + attr_ewidth(binattr) > sc_width)\n  \t\t                         ^",
+                    "line" : "1033",
+                    "diagnostic_num" : "180",
+                    "file" : "line.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \t\t\tSTORE_CHAR(*s, AT_BINARY, NULL, pos);\n  \t\t\t^",
+                    "line" : "1037",
+                    "diagnostic_num" : "180",
+                    "file" : "line.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \t\tadd_linebuf(*p, AT_ANSI, 0);\n  \t\t            ^",
+                    "line" : "1073",
+                    "diagnostic_num" : "180",
+                    "file" : "line.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \t\t\tadd_linebuf(' ', AT_NORMAL, 1);\n  \t\t\t            ^",
+                    "line" : "1122",
+                    "diagnostic_num" : "180",
+                    "file" : "line.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \t\tadd_linebuf('\\n', AT_NORMAL, 0);\n  \t\t            ^",
+                    "line" : "1146",
+                    "diagnostic_num" : "180",
+                    "file" : "line.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \t\tadd_linebuf(' ', AT_NORMAL, 1);\n  \t\t            ^",
+                    "line" : "1164",
+                    "diagnostic_num" : "180",
+                    "file" : "line.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \t\tadd_linebuf('\\b', AT_NORMAL, -1);\n  \t\t            ^",
+                    "line" : "1165",
+                    "diagnostic_num" : "180",
+                    "file" : "line.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \tset_linebuf(curr, '\\0', AT_NORMAL);\n  \t                  ^",
+                    "line" : "1167",
+                    "diagnostic_num" : "180",
+                    "file" : "line.c",
+                    "type" : "warning"
+                },
+                {
+                    "msg" : "argument is incompatible with formal parameter\n  \tset_linebuf(0, c, AT_NORMAL|AT_HILITE);\n  \t               ^",
+                    "line" : "1177",
+                    "diagnostic_num" : "180",
+                    "file" : "line.c",
+                    "type" : "warning"
+                }
+            ],
+            "end_time" : "2018-12-02T06:35:17Z"
+        }
+    ]
+}

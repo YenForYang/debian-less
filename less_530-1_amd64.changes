@@ -1,0 +1,29 @@
+Format: 1.8
+Date: Sun, 02 Dec 2018 07:34:29 +0100
+Source: less
+Binary: less
+Built-For-Profiles: nobiarch nocheck
+Architecture: amd64
+Version: 530-1
+Distribution: UNRELEASED
+Urgency: medium
+Maintainer: Anibal Monsalve Salazar <anibal@debian.org>
+Changed-By: Richard Yang <richard@yenforyang.com>
+Description:
+ less       - pager program similar to more
+Changes:
+ less (530-1) UNRELEASED; urgency=medium
+ .
+   * New upstream release
+Checksums-Sha1:
+ 22818bd63f2e88ae86ddc9ad3904f2dbde636861 185304 less-dbgsym_530-1_amd64.deb
+ df5567cb9fd36ab5c33798606de94d6ceacc94a5 5367 less_530-1_amd64.buildinfo
+ 648fc5718258efecaa87bdddbf8fb45cc4268e1f 202104 less_530-1_amd64.deb
+Checksums-Sha256:
+ 70c3d07f50cb61de3f5db95e2ef3919ea899c24e96d1b3494572444d8a9539bc 185304 less-dbgsym_530-1_amd64.deb
+ 7588b34ac05bb2bdc7ab9c078697325dedce1ff4c0ccf2dac975e0e7c0ebc0c7 5367 less_530-1_amd64.buildinfo
+ 5f99a5e545f45827a0051789a7da5de2a9266ff47ea8fb0206b2399c89bef8a7 202104 less_530-1_amd64.deb
+Files:
+ 873bc39cc50268205c9c0d7c35aa05eb 185304 debug optional less-dbgsym_530-1_amd64.deb
+ 1ba956765f5dfe0a9611cc30e6c4f082 5367 text important less_530-1_amd64.buildinfo
+ 5fba7d9fd5b76dbfaecf2ceeadf6c907 202104 text important less_530-1_amd64.deb
